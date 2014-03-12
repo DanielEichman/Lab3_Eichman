@@ -10,7 +10,9 @@ Lab3_Eichman
 
 #####Buttons (4)
 ->Btn(3):Reset (Moore, Mealy, Prime)
+
 ->Btn(2):Stop (Moore, Mealy, Prime)
+
 ->Btn(1):up_down (Moore, Mealy, Prime)
 
 #####LED’s (8)
@@ -18,6 +20,7 @@ Lab3_Eichman
 
 #####Switches (8)
 ->Switch (0 to 2): Three bit number to input to floor to go to (Prime)
+
 ->Switch (3 to 5): Three bit number to input present floor (Multiple Elevators) 
 
 ###Documentation
