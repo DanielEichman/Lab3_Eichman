@@ -25,8 +25,12 @@ Lab3_Eichman
 	
 ####Basic Elevator Controller
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Basic_Moore.JPG)
-The above codes shows how the inputs were matched up. The link to the fully shell can be found ![here](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell.vhd)
+
+The above code shows how the inputs were matched up. The link to the fully shell can be found ![here](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell.vhd)
 ####Mealy Elevator Controller	
+![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Basic_Mealy.JPG)
+
+The above code shows the relationship between inputs and outputs. The full shell can be found ![here](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MealyElevatorController_Shell.vhd)
 ####More Floors
 ####Change Inputs
 ####Moving Lights
