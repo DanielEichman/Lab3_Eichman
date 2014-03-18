@@ -5,7 +5,7 @@
 -- Create Date:    	10:33:47 07/07/2012 
 -- Design Name:		CE3
 -- Module Name:    	MooreElevatorController_Shell - Behavioral 
--- Description: 		Shell for completing CE3
+-- Description: 		Moore Elevator Controller with an output of the current floor. It has a total of 4 floors it can travel to. It needs one clk cycle to change a floor. 
 --
 ----------------------------------------------------------------------------------
 library IEEE;

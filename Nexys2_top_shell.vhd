@@ -6,7 +6,7 @@
 -- Module Name:    Nexys2_Lab3top - Behavioral 
 -- Target Devices: Nexys2 Project Board
 -- Tool versions: 
--- Description: This file is a shell for implementing designs on a NEXYS 2 board
+-- Description: This file is a shell for implementing designs on a NEXYS 2 board, it has many different compenets depending one which functionalty we are testing. 
 -- 
 --
 ----------------------------------------------------------------------------------
@@ -231,7 +231,7 @@ begin
 
 --------------------------------------------------------------------------------------
 --Demonstarted Prime Elevator Controll with Moore machine
---	Basic_Moore: MooreElevatorController_Shell_Prime PORT MAP(
+--	Prime_Elevator: MooreElevatorController_Shell_Prime PORT MAP(
 --		clk => ClockBus_sig(25),
 --		reset => btn(0),
 --		stop => btn(3),
@@ -272,7 +272,7 @@ begin
 ---------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
 ----Demonstarted Elevator with switches as an input and flashing lights
---Inst_MooreElevatorController_Shell_ChangeInput: MooreElevatorController_Shell_ChangeInput PORT MAP(
+--Change_Input: MooreElevatorController_Shell_ChangeInput PORT MAP(
 --		clk => ClockBus_sig(25),
 --		reset => btn(0),
 --		wantedFloor => switch(2 downto 0),

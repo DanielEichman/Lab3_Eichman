@@ -5,7 +5,7 @@
 -- Create Date:    10:33:47 07/07/2012 
 -- Design Name: 
 -- Module Name:    MooreElevatorController - Behavioral 
--- Description: Mealy Elevator COntroller with two outputs of floor and next floot
+-- Description: Mealy Elevator Controller with two outputs of floor and next floor. It changes floor every clk cycle.
 
 ----------------------------------------------------------------------------------
 library IEEE;

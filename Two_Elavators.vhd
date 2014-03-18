@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Daniel Eichman
 -- 
 -- Create Date:    21:18:25 03/16/2014 
 -- Design Name: 
@@ -8,14 +8,8 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
+-- Description: This is the interface that interacts with two Mealy Elevators. It takes in a current floor and wanted floor. Then it choses the closes elevator and picks up the passenger then travels to the wanted floor. 
+
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

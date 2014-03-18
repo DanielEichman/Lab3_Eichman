@@ -4,8 +4,8 @@
 -- 
 -- Create Date:    	10:33:47 07/07/2012 
 -- Design Name:		CE3
--- Module Name:    	MooreElevatorController_Shell - Behavioral 
--- Description: 		Shell for completing CE3
+-- Module Name:    	MooreElevatorController_Shell_ChagneInputs - Behavioral 
+-- Description: 		This sheel takes in a 3 bit binary number and then moves the elevator to that floor. One floor per cycle. 
 --
 ----------------------------------------------------------------------------------
 library IEEE;

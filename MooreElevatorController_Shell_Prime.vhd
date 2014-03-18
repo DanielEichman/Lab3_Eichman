@@ -4,8 +4,8 @@
 -- 
 -- Create Date:    	10:33:47 07/07/2012 
 -- Design Name:		CE3
--- Module Name:    	MooreElevatorController_Shell - Behavioral 
--- Description: 		Shell for completing CE3
+-- Module Name:    	MooreElevatorController_Shell_Prime - Behavioral 
+-- Description: 		Moore Elevator Controller with an output of current floor. It has a total of 8 ouputs ranging from 0001 to 1000. It does not output prime numbers as the name suggests but rather the prime numbers can be mapped later on. 
 --
 ----------------------------------------------------------------------------------
 library IEEE;
