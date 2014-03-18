@@ -22,7 +22,7 @@ Lab3_Eichman
 ->Switch (2 to 0): Three bit number to input to floor to go to (Change Inputs, Multiple Elevators)
 
 ->Switch (7 to 5): Three bit number to input present floor (Multiple Elevators) 
-	
+##Lab	
 ####Basic Elevator Controller
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Basic_Moore.JPG)
 
@@ -41,9 +41,11 @@ The prime elevator ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/m
 
 Most the fancy code happens in the ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_ChangeInputs.vhd). In the shell there are a set of 64 if statements to ditermine if the current floor is above or below the diresired floor. 
 
-For the moving lights the Clock_Bus signal was while travelling up and reversed when it was travelling down. Another emapcipated state was created to deteriming direction of travel. 
+For the moving lights the CLOCKBUS_SIG  was used while travelling up and reversed when it was travelling down. Another emapcipated state was created to deteriming direction of travel. 
 
 ####Demonstrated Multiple Elevators
+![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Two_Elevators.JPG)
 
+This senaior required another intermediate shell that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor the to the desired floor. 
 ###Documentation
 C3C Sean Bapty helped me understand what was needed for the schematic
