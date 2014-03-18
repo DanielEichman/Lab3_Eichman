@@ -22,6 +22,13 @@ Lab3_Eichman
 ->Switch (2 to 0): Three bit number to input to floor to go to (Change Inputs, Multiple Elevators)
 
 ->Switch (7 to 5): Three bit number to input present floor (Multiple Elevators) 
+	
+####Basic Elevator Controller	
+####Mealy Elevator Controller	
+####More Floors
+####Change Inputs
+####Moving Lights
+####Demonstrated Multiple Elevators
 
 ###Documentation
 C3C Sean Bapty helped me understand what was needed for the schematic
