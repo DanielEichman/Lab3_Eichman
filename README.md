@@ -48,5 +48,8 @@ For the moving lights the CLOCKBUS_SIG  was used while travelling up and reverse
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Two_Elavators.JPG)
 
 This scenario required another intermediate ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/Two_Elavators.vhd) that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor then to the desired floor. 
+##Code Critique 
+```--clk'event and clk='1' is VHDL-speak for a rising edge
+	 if clk'event and clk='1' then```
 ###Documentation
 C3C Sean Bapty helped me understand what was needed for the schematic
