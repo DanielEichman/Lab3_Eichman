@@ -61,7 +61,7 @@ architecture Behavioral of Nexys2_top_shell is
 		sseg1 : IN std_logic_vector(7 downto 0);
 		sseg2 : IN std_logic_vector(7 downto 0);
 		sseg3 : IN std_logic_vector(7 downto 0);          
-		sel : OUT std_logic_vector(3 downto 0);
+		sel  : OUT std_logic_vector(3 downto 0);
 		sseg : OUT std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
@@ -78,20 +78,7 @@ architecture Behavioral of Nexys2_top_shell is
 		clockbus : OUT std_logic_vector(26 downto 0)
 		);
 	END COMPONENT;
------------------------------
--- Thiis is the import from CE3 it currentlyonly has 4 (1-4) floors
--- Input clock, reset, stop, up_down ( 1 =up)
--- floor (floor 1-4)
------------------------------
-	COMPONENT MooreElevatorController_Shell
-	PORT(
-		clk : IN std_logic;
-		reset : IN std_logic;
-		stop : IN std_logic;
-		up_down : IN std_logic;          
-		floor : OUT std_logic_vector(3 downto 0)
-		);
-	END COMPONENT;
+
 -------------------------------------------------------------------------------------
 --Below are declarations for signals that wire-up this top-level module.
 -------------------------------------------------------------------------------------
@@ -104,21 +91,92 @@ signal ClockBus_sig : STD_LOGIC_VECTOR (26 downto 0);
 --------------------------------------------------------------------------------------
 --Insert your design's component declaration below	
 --------------------------------------------------------------------------------------
-
-
-
+-----------------------------
+-- Thiis is the import from CE3 it is the basic Moore Machine
+-- Input clock, reset, stop, up_down ( 1 =up)
+-- floor (floor 1-4)
+-----------------------------
+	COMPONENT MooreElevatorController_Shell
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+-----------------------------
+-- Thiis is the import from CE3 it is the basic Mealy Machine
+-- Input clock, reset, stop, up_down ( 1 =up)
+-- floor (floor 1-4)
+-----------------------------
+	COMPONENT MealyElevatorController_Shell
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0);
+		nextfloor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+-----------------------------
+-- This is the import prime Moore machine
+-- Input clock, reset, stop, up_down ( 1 =up)
+-- floor (floor 1-8) will then be converted to frist eight prime numbers
+-----------------------------
+COMPONENT MooreElevatorController_Shell_Prime
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+-----------------------------------------
+-- This is the import prime Moore machine
+-- Input clock, reset, wantedFloor
+-- floor (floor 1-8) will then be converted to frist eight prime numbers
+-----------------------------------------
+COMPONENT MooreElevatorController_Shell_ChangeInput
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		wantedFloor : IN std_logic_vector(2 downto 0);          
+		floor : OUT std_logic_vector(3 downto 0);
+		LEDIN : in std_logic_vector(7 downto 0);
+		LED : out STD_LOGIC_VECTOR(7 downto 0)
+		);
+	END COMPONENT;
+----------------------------------------
+-- This is used to impement two elevators;
+----------------------------------------
+COMPONENT Two_Elavators
+PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		currentFloor : IN std_logic_vector(2 downto 0);
+		wantedFloor : IN std_logic_vector(2 downto 0);
+		LEDIN : IN std_logic_vector(7 downto 0);          
+		elevator1 : OUT std_logic_vector(3 downto 0);
+		elevator2 : OUT std_logic_vector(3 downto 0);
+		LED : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;
 --------------------------------------------------------------------------------------
 --Insert any required signal declarations below
 --------------------------------------------------------------------------------------
 
-
-
+signal floor_state: std_logic_vector(3 downto 0);
+signal next_floor: std_logic_vector(3 downto 0);
+signal prime_output: std_logic_vector(3 downto 0);
 begin
 
 ----------------------------
 --code below tests the LEDs:
 ----------------------------
-LED <= CLOCKBUS_SIG(26 DOWNTO 19);
+--LED <= CLOCKBUS_SIG(26 DOWNTO 19);
 
 --------------------------------------------------------------------------------------------	
 --This code instantiates the Clock Divider. Reference the Clock Divider Module for more info
@@ -138,11 +196,105 @@ LED <= CLOCKBUS_SIG(26 DOWNTO 19);
 --		  Example: if you are not using 7-seg display #3 set nibble3 to "0000"
 --------------------------------------------------------------------------------------
 
-nibble0 <= 
-nibble1 <= 
-nibble2 <= 
-nibble3 <= 
+------------------------------------------------------------------------------------------
+------Demonstarted Basic Elevator Controll with Moore machine
+--	Basic_Moore: MooreElevatorController_Shell PORT MAP(
+--		clk => ClockBus_sig(25),
+--		reset => btn(0),
+--		stop => btn(3),
+--		up_down => switch(0),
+--		floor => floor_state
+--	);
+--	
+--	nibble0<=floor_state;
+--	nibble1 <= "0000";
+--	nibble2 <= "0000";
+--	nibble3 <= "0000";
+-------------------------------------------------------------------------------------------
 
+----------------------------------------------------------------------------------------
+------Demonstarted Prime Elevator Controll with Mealy machine
+--	Basic_Mealy: MealyElevatorController_Shell PORT MAP(
+--		clk => ClockBus_sig(25),
+--		reset => btn(0),
+--		stop => btn(3),
+--		up_down => switch(0),
+--		floor => floor_state,
+--		nextfloor => next_floor
+--	);
+--
+--	nibble0<= floor_state;
+--	nibble1 <= "0000";
+--	nibble2 <= "0000";
+--	nibble3 <= next_floor;
+-----------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+--Demonstarted Prime Elevator Controll with Moore machine
+--	Basic_Moore: MooreElevatorController_Shell_Prime PORT MAP(
+--		clk => ClockBus_sig(25),
+--		reset => btn(0),
+--		stop => btn(3),
+--		up_down => switch(0),
+--		floor => prime_output
+--	);
+--	process(prime_output)
+--	begin
+--		if(prime_output = "0001")then--2
+--			nibble0<="0010";
+--			nibble1<="0000";
+--		elsif(prime_output = "0010") then--3
+--			nibble0<="0011";
+--			nibble1<="0000";
+--		elsif(prime_output = "0011") then--5
+--			nibble0<="0101";
+--			nibble1<="0000";
+--		elsif(prime_output = "0100") then--7
+--			nibble0<="0111";
+--			nibble1<="0000";
+--		elsif(prime_output = "0101") then--11
+--			nibble0<="0001";
+--			nibble1<="0001";
+--		elsif(prime_output = "0110") then--13
+--			nibble0<="0011";
+--			nibble1<="0001";
+--		elsif(prime_output = "0111") then--17
+--			nibble0<="0111";
+--			nibble1<="0001";
+--		elsif(prime_output = "1000") then--19
+--			nibble0<="1001";
+--			nibble1<="0001";
+--		else
+--			nibble0<="0000";
+--			nibble1<="0000";
+--		end if;
+--	end process;
+---------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+----Demonstarted Elevator with switches as an input and flashing lights
+--Inst_MooreElevatorController_Shell_ChangeInput: MooreElevatorController_Shell_ChangeInput PORT MAP(
+--		clk => ClockBus_sig(25),
+--		reset => btn(0),
+--		wantedFloor => switch(2 downto 0),
+--		floor => nibble0,
+--		LEDIN => CLOCKBUS_SIG(26 downto 19),
+--		LED=>LED
+--	);
+-----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+----Demonstarted two elevators
+	Inst_Two_Elavators: Two_Elavators PORT MAP(
+		clk => ClockBus_sig(25),
+		reset => btn(0),
+		currentFloor => switch(7 downto 5),
+		wantedFloor => switch(2 downto 0),
+		elevator1 => nibble0,
+		elevator2 => nibble3,
+		LEDIN => CLOCKBUS_SIG(26 downto 19),
+		LED => LED
+	);
+---------------------------------------------------------------------------------------
+--LED <= CLOCKBUS_SIG(26 DOWNTO 19);
 --This code converts a nibble to a value that can be displayed on 7-segment display #0
 	sseg0: nibble_to_sseg PORT MAP(
 		nibble => nibble0,
@@ -184,7 +336,6 @@ nibble3 <=
 -----------------------------------------------------------------------------
 --Instantiate the design you with to implement below and start wiring it up!:
 -----------------------------------------------------------------------------
-
 
 end Behavioral;
 
