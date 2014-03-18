@@ -35,10 +35,14 @@ The above code shows the relationship between inputs and outputs. The full shell
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Prime_Elevator.JPG)
 
 The prime elevator ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_Prime.vhd) was redesied to have 8 floors. This shell will return a floor from 1-8 (0001 to 1000). To then light up the first eight prime floors a process was need that mapped 1-8 to 2-19. 
-####Change Inputs
+
+####Change Inputs and Moving Lights
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Change_Inputs.JPG)
+
 Most the fancy code happens in the ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_ChangeInputs.vhd). In the shell there are a set of 64 if statements to ditermine if the current floor is above or below the diresired floor. 
-####Moving Lights
+
+For the moving lights the Clock_Bus signal was while travelling up and reversed when it was travelling down. Another emapcipated state was created to deteriming direction of travel. 
+
 ####Demonstrated Multiple Elevators
 
 ###Documentation
