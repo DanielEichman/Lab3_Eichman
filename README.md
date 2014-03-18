@@ -43,9 +43,9 @@ Most the fancy code happens in the ![shell](https://github.com/DanielEichman/Lab
 
 For the moving lights the CLOCKBUS_SIG  was used while travelling up and reversed when it was travelling down. Another emapcipated state was created to deteriming direction of travel. 
 
-####Demonstrated Multiple Elevators
-![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Two_Elevators.JPG)
+####Multiple Elevators
+![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Two_Elavators.JPG)
 
-This senaior required another intermediate shell that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor the to the desired floor. 
+This senaior required another intermediate ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/Two_Elavators.vhd) that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor the to the desired floor. 
 ###Documentation
 C3C Sean Bapty helped me understand what was needed for the schematic
