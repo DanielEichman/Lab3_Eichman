@@ -13,12 +13,13 @@ Lab3_Eichman
 
 ->Btn(3):Stop (Moore, Mealy, Prime)
 
-->Switch(1):up_down (Moore, Mealy, Prime)
 
 #####LED’s (8)
 ->moving lights that symbolize the directions of the elevator 
 
 #####Switches (8)
+->Switch(0):up_down (Moore, Mealy, Prime)
+
 ->Switch (2 to 0): Three bit number to input to floor to go to (Change Inputs, Multiple Elevators)
 
 ->Switch (7 to 5): Three bit number to input present floor (Multiple Elevators) 
