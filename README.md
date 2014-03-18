@@ -34,18 +34,18 @@ The above code shows the relationship between inputs and outputs. The full shell
 ####More Floors(Prime Floors)
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Prime_Elevator.JPG)
 
-The prime elevator ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_Prime.vhd) was redesied to have 8 floors. This shell will return a floor from 1-8 (0001 to 1000). To then light up the first eight prime floors a process was need that mapped 1-8 to 2-19. 
+The prime elevator ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_Prime.vhd) was redesigned to have 8 floors. This shell will return a floor from 1-8 (0001 to 1000). To then light up the first eight prime floors a process was need that mapped 1-8 to 2-19. 
 
 ####Change Inputs and Moving Lights
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Change_Inputs.JPG)
 
-Most the fancy code happens in the ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_ChangeInputs.vhd). In the shell there are a set of 64 if statements to ditermine if the current floor is above or below the diresired floor. 
+Most the fancy code happens in the ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/MooreElevatorController_Shell_ChangeInputs.vhd). In the shell there are a set of 64 if statements to determine if the current floor is above or below the desired floor. 
 
-For the moving lights the CLOCKBUS_SIG  was used while travelling up and reversed when it was travelling down. Another emapcipated state was created to deteriming direction of travel. 
+For the moving lights the CLOCKBUS_SIG  was used while travelling up and reversed when it was travelling down. Another emancipated state was created to determine direction of travel. 
 
 ####Multiple Elevators
 ![Image](https://raw.github.com/DanielEichman/Lab3_Eichman/master/Two_Elavators.JPG)
 
-This senaior required another intermediate ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/Two_Elavators.vhd) that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor the to the desired floor. 
+This scenario required another intermediate ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/Two_Elavators.vhd) that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor the to the desired floor. 
 ###Documentation
 C3C Sean Bapty helped me understand what was needed for the schematic
