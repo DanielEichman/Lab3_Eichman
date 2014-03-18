@@ -49,7 +49,6 @@ For the moving lights the CLOCKBUS_SIG  was used while travelling up and reverse
 
 This scenario required another intermediate ![shell](https://github.com/DanielEichman/Lab3_Eichman/blob/master/Two_Elavators.vhd) that interacted with two MooreElevatorController_Shell_ChangeInputs. This shell determined which elevator was closer sent it to the current floor then to the desired floor. 
 ##Code Critique 
-##Code Critique 
 ####Bad Code
 ```
 floor_state_machine: process(clk)
